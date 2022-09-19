@@ -1,0 +1,13 @@
+<launch>
+    <!-- Arguments -->
+    <arg name="model" default="example_robot.urdf" doc="Model name (name of the XACRO file without extension)" />
+
+    <!-- Parameters on the ROS parameter server -->
+    <param name="robot_description" command="xacro $(find urdf_example)/urdf/$(arg model).xacro" />
+
+    <!-- Nodes to be launched -->
+    <!-- Joint state and robot state publishers -->
+    <node name="rviz" type="rviz" pkg="rviz" required="true" />
+    <node name="joint_state_publisher" type="joint_state_publisher_gui" pkg="joint_state_publisher_gui" />
+    <node name="robot_state_publisher" type="robot_state_publisher" pkg="robot_state_publisher" />
+</launch>
